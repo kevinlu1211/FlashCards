@@ -93,14 +93,14 @@ class CardCollectionViewController: UICollectionViewController {
         let card = deck.flashCards![indexPath.row]
 
         // Configure the cell
-        cell.phraseLabel.configureCollectionViewCellLabel(card.phrase)
+        cell.phraseLabel.text = card.phrase
+        
         if let pronunciation = card.pronunciation {
             cell.pronunciationLabel.text = pronunciation
 
         }
         if let definition = card.definition {
-            cell.definitionLabel.configureCollectionViewCellLabel(definition)
-
+            cell.definitionLabel.text = definition
         }
         
         // Set background
@@ -109,6 +109,13 @@ class CardCollectionViewController: UICollectionViewController {
         return cell
     }
 
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let card = deck.flashCards![indexPath.row]
+        let detailCardViewController = self.storyboard?.instantiateViewControllerWithIdentifier("detailCardViewController") as! DetailCardViewController
+        detailCardViewController.card = card
+        self.navigationController?.pushViewController(detailCardViewController, animated: true)
+        
+    }
     // MARK: UICollectionViewDelegate
 
     /*

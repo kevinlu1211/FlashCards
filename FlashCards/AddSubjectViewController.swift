@@ -35,6 +35,9 @@ class AddSubjectViewController: UIViewController, UITextFieldDelegate {
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "woodenBackground")!)
         addSubjectView.backgroundColor = UIColor.whiteColor()
         addSubjectView.alpha = 0.7
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        self.view.addGestureRecognizer(tapGesture)
     }
     
     func configureNavigationBar() {
@@ -80,6 +83,12 @@ class AddSubjectViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    // MARK: Keyboard
+    
+    func dismissKeyboard() {
+        // endEditing iterates through the subviews of our view and dismisses the keyboard which is a subview?
+        self.view.endEditing(true)
+    }
 
 
 }

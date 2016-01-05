@@ -12,7 +12,6 @@ private let reuseIdentifier = "deckCell"
 
 class DeckCollectionViewController: UICollectionViewController {
 
-    // MARK: - Constant
     
     // MARK: - Variables
     var subject : Subject!

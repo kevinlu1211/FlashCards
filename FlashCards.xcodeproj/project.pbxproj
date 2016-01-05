@@ -34,6 +34,7 @@
 		19B020691C3B6E75001791D2 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 19B020671C3B6E75001791D2 /* libxml2.2.tbd */; };
 		19B0206A1C3B6E75001791D2 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 19B020681C3B6E75001791D2 /* libxml2.tbd */; };
 		19B0206C1C3B7C33001791D2 /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B0206B1C3B7C33001791D2 /* ButtonExtension.swift */; };
+		19C40C971C3C068F000BC474 /* DetailCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C40C961C3C068F000BC474 /* DetailCardViewController.swift */; };
 		19E7BC481C375CC80079A1EF /* DetailDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E7BC471C375CC80079A1EF /* DetailDeckViewController.swift */; };
 		19E7BC4C1C3760720079A1EF /* UserActionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E7BC4B1C3760720079A1EF /* UserActionCollectionViewCell.swift */; };
 		19E7BC521C37678A0079A1EF /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E7BC511C37678A0079A1EF /* CardCollectionViewCell.swift */; };
@@ -104,6 +105,7 @@
 		19B020671C3B6E75001791D2 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		19B020681C3B6E75001791D2 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		19B0206B1C3B7C33001791D2 /* ButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
+		19C40C961C3C068F000BC474 /* DetailCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCardViewController.swift; sourceTree = "<group>"; };
 		19E7BC471C375CC80079A1EF /* DetailDeckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailDeckViewController.swift; sourceTree = "<group>"; };
 		19E7BC4B1C3760720079A1EF /* UserActionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserActionCollectionViewCell.swift; sourceTree = "<group>"; };
 		19E7BC511C37678A0079A1EF /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				196CBD221C3299E600302FE3 /* AddDeckViewController.swift */,
 				19E7BC471C375CC80079A1EF /* DetailDeckViewController.swift */,
 				19E7BC531C3767970079A1EF /* CardCollectionViewController.swift */,
+				19C40C961C3C068F000BC474 /* DetailCardViewController.swift */,
 				192CFA0F1C37AD4900ED4585 /* AddCardViewController.swift */,
 				19ED4D421C38BE5D00CA2E1E /* TestCollectionViewController.swift */,
 				191E4E5A1C38DC0C00C3686D /* FullTestViewController.swift */,
@@ -460,6 +463,7 @@
 				19ED4D471C38C18A00CA2E1E /* LabelExtension.swift in Sources */,
 				196CBD121C325F5B00302FE3 /* DeckCollectionViewController.swift in Sources */,
 				19ED4D3F1C38B52800CA2E1E /* ConfigureCollectionView.swift in Sources */,
+				19C40C971C3C068F000BC474 /* DetailCardViewController.swift in Sources */,
 				191E4E5B1C38DC0C00C3686D /* FullTestViewController.swift in Sources */,
 				19E7BC521C37678A0079A1EF /* CardCollectionViewCell.swift in Sources */,
 				1943319A1C33F0E0001ABC7D /* FlashCard.swift in Sources */,

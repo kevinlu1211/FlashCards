@@ -33,16 +33,19 @@ class AddDeckViewController: UIViewController, UITextFieldDelegate, UITextViewDe
 
     func configureUI() {
         configureView()
-        configureTextField()
-        configureTextView()
         configureNavigationBar()
- 
     }
     
     func configureView() {
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "woodenBackground")!)
         addDeckView.backgroundColor = UIColor.whiteColor()
         addDeckView.alpha = 0.7
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        self.view.addGestureRecognizer(tapGesture)
+        
+        configureTextField(deckNameTextField)
+        configureTextView(deckDetailTextView)
     }
     
     func configureNavigationBar() {
@@ -56,18 +59,17 @@ class AddDeckViewController: UIViewController, UITextFieldDelegate, UITextViewDe
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: "dismissViewController")
     }
     
-    func configureTextField() {
+    func configureTextField(textField : UITextField) {
         let str = NSAttributedString(string: "Deck Name", attributes: [NSForegroundColorAttributeName:UIColor.grayColor()])
-        deckNameTextField.attributedPlaceholder = str
-        deckNameTextField.delegate = self
+        textField.attributedPlaceholder = str
+        textField.delegate = self
     }
     
-    func configureTextView() {
-        deckDetailTextView.delegate = self
-        deckDetailTextView.backgroundColor = UIColor.clearColor()
-        deckDetailTextView.text = "Enter deck details"
-        deckDetailTextView.textColor = UIColor.grayColor()
-//        deckDetailTextView.contentOffset = CGPointMake(0, 50)
+    func configureTextView(textView : UITextView) {
+        textView.delegate = self
+        textView.backgroundColor = UIColor.clearColor()
+        textView.text = "Enter deck details"
+        textView.textColor = UIColor.grayColor()
     }
     
     func addDeck() {
@@ -121,6 +123,13 @@ class AddDeckViewController: UIViewController, UITextFieldDelegate, UITextViewDe
             textView.textColor = UIColor.grayColor()
         }
         textView.resignFirstResponder()
+    }
+    
+    // MARK: Keyboard
+    
+    func dismissKeyboard() {
+        // endEditing iterates through the subviews of our view and dismisses the keyboard which is a subview?
+        self.view.endEditing(true)
     }
     /*
     // MARK: - Navigation

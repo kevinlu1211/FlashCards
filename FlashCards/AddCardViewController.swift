@@ -56,14 +56,12 @@ class AddCardViewController: UIViewController, UITextViewDelegate {
         configureView()
         configureNavigationBar()
         configureToolbar()
-        
-        
     }
     
     func configureView() {
         
         // Add tapview to view
-        let tapView = UITapGestureRecognizer(target: self, action: "keyboardHide")
+        let tapView = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         self.view.addGestureRecognizer(tapView)
 
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "woodenBackground")!)
@@ -120,16 +118,33 @@ class AddCardViewController: UIViewController, UITextViewDelegate {
         
         // Configure the items
         self.navigationItem.title = "Add your card"
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "dismissViewController")
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addCard")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .Plain, target: self, action: "dismissViewController")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Card", style: .Plain, target: self, action: "addCard")
         
         // Don't want to enable the button if the user didn't enter anything for the phrase
         self.navigationItem.rightBarButtonItem?.enabled = false
     }
     
+    func configureToolbar() {
+        toolbar.tintColor = UIColor.whiteColor()
+        toolbar.barStyle = UIBarStyle.BlackOpaque
+        toolbar.translucent = true
+        searchWordButton.tintColor = UIColor.whiteColor()
+    }
+    
+    func configureButton(button : UIButton) {
+        let buttonTitleFontSize : CGFloat = 17.0
+        button.backgroundColor = UIColor(colorLiteralRed: 1.0, green: 1.0, blue: 1.0, alpha: 0.7)
+        button.titleLabel!.font = UIFont(name: "FuturaLight", size: buttonTitleFontSize)
+        button.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        button.hidden = true
+    }
+
     func dismissViewController() {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    // MARK: - Buttons
     
     func addCard() {
         
@@ -176,20 +191,6 @@ class AddCardViewController: UIViewController, UITextViewDelegate {
         
     }
 
-    func configureToolbar() {
-        toolbar.tintColor = UIColor.whiteColor()
-        toolbar.barStyle = UIBarStyle.BlackOpaque
-        toolbar.translucent = true
-        searchWordButton.tintColor = UIColor.whiteColor()
-    }
-    
-    func configureButton(button : UIButton) {
-        let buttonTitleFontSize : CGFloat = 17.0
-        button.backgroundColor = UIColor(colorLiteralRed: 1.0, green: 1.0, blue: 1.0, alpha: 0.7)
-        button.titleLabel!.font = UIFont(name: "FuturaLight", size: buttonTitleFontSize)
-        button.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        button.hidden = true
-    }
     
     func showButtons() {
         self.nextResultButton.hidden = false
@@ -200,7 +201,6 @@ class AddCardViewController: UIViewController, UITextViewDelegate {
         self.nextResultButton.hidden = true
         self.previousResultButton.hidden = true
     }
-    // MARK: - Buttons
     
     @IBAction func previousResult(sender: AnyObject) {
         // Reduce the index by one and enable next button
@@ -274,7 +274,7 @@ class AddCardViewController: UIViewController, UITextViewDelegate {
 
     // MARK: Keyboard
     
-    func keyboardHide() {
+    func dismissKeyboard() {
         // endEditing iterates through the subviews of our view and dismisses the keyboard which is a subview?
         self.view.endEditing(true)
     }
