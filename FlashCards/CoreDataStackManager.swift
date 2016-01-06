@@ -11,7 +11,8 @@ import CoreData
 
 private let SQLITE_FILE_NAME = "VirtualTourist.sqlite"
 
-class CoreDataStackManager {
+class CoreDataStackManager : NSObject {
+    
     // MARK: - Shared Instance
     
     class func sharedInstance() -> CoreDataStackManager {
@@ -37,21 +38,22 @@ class CoreDataStackManager {
         let coordinator : NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
         
         // Getting the URL for where the file should be stored
-        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent(SQLITE_FILE_NAME)
+        let storeURL = self.applicationDocumentsDirectory.URLByAppendingPathComponent(SQLITE_FILE_NAME)
+    
         
-//        print("sqlite path: \(url.path!)")
+        let storeOptions = [NSPersistentStoreUbiquitousContentNameKey : "FlashCardsCloudStore"]
+        let store : NSPersistentStore
+        let iCloudURL : NSURL
         
-        // Attempting to create a persistent store at url.path
-        
-        var failureReason = "There was an error creating or loading the application's saved data."
-        
+        // Create remote store
         do {
-            try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
+            store = try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: storeOptions)
+            iCloudURL = store.URL!
         } catch {
             var dict = [String : AnyObject]()
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
-            dict[NSLocalizedFailureReasonErrorKey] = failureReason
-            
+            dict[NSLocalizedFailureReasonErrorKey] = "There was an error creating or loading the application's saved data."
+
             dict[NSUnderlyingErrorKey] = error as NSError
             let wrappedError = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
             // Replace this with code to handle the error appropriately.
@@ -61,6 +63,7 @@ class CoreDataStackManager {
             NSLog("Unresolved error \(wrappedError.userInfo)")
             abort()
         }
+
         
         return coordinator
     }()
@@ -93,4 +96,16 @@ class CoreDataStackManager {
         }
     }
     
+    
 }
+
+
+
+
+
+
+
+
+
+
+

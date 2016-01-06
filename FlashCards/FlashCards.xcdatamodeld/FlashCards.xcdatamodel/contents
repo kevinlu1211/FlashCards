@@ -3,7 +3,7 @@
     <entity name="Deck" representedClassName=".Deck" syncable="YES">
         <attribute name="detail" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="flashCards" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="FlashCard" inverseName="deck" inverseEntity="FlashCard" syncable="YES"/>
+        <relationship name="flashCards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FlashCard" inverseName="deck" inverseEntity="FlashCard" syncable="YES"/>
         <relationship name="subject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Subject" inverseName="decks" inverseEntity="Subject" syncable="YES"/>
     </entity>
     <entity name="FlashCard" representedClassName=".FlashCard" syncable="YES">
@@ -14,7 +14,7 @@
     </entity>
     <entity name="Subject" representedClassName=".Subject" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="decks" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Deck" inverseName="subject" inverseEntity="Deck" syncable="YES"/>
+        <relationship name="decks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Deck" inverseName="subject" inverseEntity="Deck" syncable="YES"/>
     </entity>
     <elements>
         <element name="Deck" positionX="-63" positionY="-18" width="128" height="105"/>

@@ -51,11 +51,12 @@ class FullTestViewController: UIViewController, UITextViewDelegate {
         configureNavigationBar()
         
         
-        let firstCard = deck.flashCards![currentIndex]
+        let firstCard = getCard(currentIndex)
         phraseTextView.text = firstCard.phrase
         pronunciationTextView.text = firstCard.pronunciation
         definitionTextView.text = firstCard.definition
     }
+    
     
     func configureView() {
         
@@ -155,7 +156,7 @@ class FullTestViewController: UIViewController, UITextViewDelegate {
         if (currentIndex - 1 < 0) {
             previousButton.disableButton()
         }
-        let card = deck.flashCards![currentIndex]
+        let card = getCard(currentIndex)
         
         // Fade card view out and then update the cardView
         updateCardView(card)
@@ -173,14 +174,14 @@ class FullTestViewController: UIViewController, UITextViewDelegate {
             previousButton.enableButton()
             if (currentIndex == maxIndex) {
                 nextButton.setTitle("Finish", forState: .Normal)
-                let card = deck.flashCards![currentIndex]
+                let card = getCard(currentIndex)
                 updateCardView(card)
             }
             else if (currentIndex > maxIndex) {
                 return
             }
             else {
-                let card = deck.flashCards![currentIndex]
+                let card = getCard(currentIndex)
                 updateCardView(card)
             }
             
@@ -201,6 +202,12 @@ class FullTestViewController: UIViewController, UITextViewDelegate {
         cardView.fadeIn(1.0, delay: 0, alpha: 0.7, completion: nil)
     }
     
+    
+    // MARK: - Convert NSSet to Array
+    func getCard(index : Int) -> FlashCard {
+        let cards = deck.flashCards?.allObjects as! [FlashCard]
+        return cards[index]
+    }
       /*
     // MARK: - Navigation
 

@@ -15,7 +15,6 @@ class DeckCollectionViewController: UICollectionViewController {
     
     // MARK: - Variables
     var subject : Subject!
-    
     lazy var sharedContext : NSManagedObjectContext =  {
         return CoreDataStackManager.sharedInstance().managedObjectContext
     }()
@@ -85,7 +84,7 @@ class DeckCollectionViewController: UICollectionViewController {
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! DeckCollectionViewCell
-        let deck = subject.decks![indexPath.row]
+        let deck = getDeck(indexPath.row)
 
         // Configure the cell
         cell.deckNameLabel.configureCollectionViewCellLabel(deck.name)
@@ -105,10 +104,15 @@ class DeckCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let deck = subject.decks![indexPath.row]
+        let deck = getDeck(indexPath.row)
         let detailDeckViewController = self.storyboard?.instantiateViewControllerWithIdentifier("detailDeckViewController") as! DetailDeckViewController
         detailDeckViewController.deck = deck
         self.navigationController?.pushViewController(detailDeckViewController, animated: true)
+    }
+    
+    func getDeck(index: Int) -> Deck {
+        let decks = subject.decks!.allObjects as? [Deck]
+        return decks![index]
     }
     // MARK: UICollectionViewDelegate
 

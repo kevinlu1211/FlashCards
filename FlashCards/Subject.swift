@@ -12,7 +12,7 @@ import CoreData
 class Subject : NSManagedObject {
     
     @NSManaged var name : String!
-    @NSManaged var decks : [Deck]?
+    @NSManaged var decks : NSSet?
     
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)

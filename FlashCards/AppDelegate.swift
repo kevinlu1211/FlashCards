@@ -13,10 +13,11 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "enableUI", name: NSPersistentStoreCoordinatorStoresDidChangeNotification, object: CoreDataStackManager.sharedInstance().persistentStoreCoordinator)
         return true
     }
 
@@ -43,6 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
         CoreDataStackManager.sharedInstance().saveContext()
     }
-
+    func enableUI() {
+       print("ui is enabled")
+    }
 }
 
