@@ -102,7 +102,6 @@
 		19B0205B1C3B6D6A001791D2 /* TFHppleElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHppleElement.m; sourceTree = "<group>"; };
 		19B0205C1C3B6D6A001791D2 /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
 		19B0205D1C3B6D6A001791D2 /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
-		19B020621C3B6D99001791D2 /* FlashCards-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FlashCards-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		19B020671C3B6E75001791D2 /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		19B020681C3B6E75001791D2 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		19B0206B1C3B7C33001791D2 /* ButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
@@ -120,6 +119,7 @@
 		19ED4D421C38BE5D00CA2E1E /* TestCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCollectionViewController.swift; sourceTree = "<group>"; };
 		19ED4D441C38BE9600CA2E1E /* TestCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCollectionViewCell.swift; sourceTree = "<group>"; };
 		19ED4D461C38C18A00CA2E1E /* LabelExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelExtension.swift; sourceTree = "<group>"; };
+		19F0D15D1C3E0ED500D5D888 /* FlashCards-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FlashCards-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -308,13 +308,13 @@
 		19B020361C3A295B001791D2 /* TFHpple */ = {
 			isa = PBXGroup;
 			children = (
+				19F0D15D1C3E0ED500D5D888 /* FlashCards-Bridging-Header.h */,
 				19B020581C3B6D6A001791D2 /* TFHpple.h */,
 				19B020591C3B6D6A001791D2 /* TFHpple.m */,
 				19B0205A1C3B6D6A001791D2 /* TFHppleElement.h */,
 				19B0205B1C3B6D6A001791D2 /* TFHppleElement.m */,
 				19B0205C1C3B6D6A001791D2 /* XPathQuery.h */,
 				19B0205D1C3B6D6A001791D2 /* XPathQuery.m */,
-				19B020621C3B6D99001791D2 /* FlashCards-Bridging-Header.h */,
 			);
 			name = TFHpple;
 			sourceTree = "<group>";
@@ -640,7 +640,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kevinlu.FlashCards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "FlashCards-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "./FlashCards/FlashCards-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -660,7 +660,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kevinlu.FlashCards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "FlashCards-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "./FlashCards/FlashCards-Bridging-Header.h";
 			};
 			name = Release;
 		};
