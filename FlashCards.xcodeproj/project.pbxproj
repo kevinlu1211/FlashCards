@@ -87,7 +87,7 @@
 		192CFA0F1C37AD4900ED4585 /* AddCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
 		194331971C33E804001ABC7D /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		194331991C33F0E0001ABC7D /* FlashCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCard.swift; sourceTree = "<group>"; };
-		19484F4B1C3CFFD4001207DD /* FlashCards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = FlashCards.entitlements; sourceTree = "<group>"; };
+		19484F4B1C3CFFD4001207DD /* FlashCards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = FlashCards.entitlements; path = Model/CoreData/FlashCards.entitlements; sourceTree = "<group>"; };
 		196CBD111C325F5B00302FE3 /* DeckCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckCollectionViewController.swift; sourceTree = "<group>"; };
 		196CBD131C32686100302FE3 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		196CBD141C32686100302FE3 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -119,7 +119,7 @@
 		19ED4D421C38BE5D00CA2E1E /* TestCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCollectionViewController.swift; sourceTree = "<group>"; };
 		19ED4D441C38BE9600CA2E1E /* TestCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCollectionViewCell.swift; sourceTree = "<group>"; };
 		19ED4D461C38C18A00CA2E1E /* LabelExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelExtension.swift; sourceTree = "<group>"; };
-		19F0D15D1C3E0ED500D5D888 /* FlashCards-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FlashCards-Bridging-Header.h"; sourceTree = "<group>"; };
+		19F0D15D1C3E0ED500D5D888 /* FlashCards-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "FlashCards-Bridging-Header.h"; path = "/Users/kevinlu/Documents/iOS/FlashCards/FlashCards/FlashCards-Bridging-Header.h"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +174,7 @@
 		19162E351C32546D00BB3BD4 /* FlashCards */ = {
 			isa = PBXGroup;
 			children = (
+				19F0D15D1C3E0ED500D5D888 /* FlashCards-Bridging-Header.h */,
 				19484F4B1C3CFFD4001207DD /* FlashCards.entitlements */,
 				19B020361C3A295B001791D2 /* TFHpple */,
 				19162E691C3254E300BB3BD4 /* Model */,
@@ -183,7 +184,6 @@
 				19162E401C32546D00BB3BD4 /* Assets.xcassets */,
 				19162E421C32546D00BB3BD4 /* LaunchScreen.storyboard */,
 				19162E451C32546D00BB3BD4 /* Info.plist */,
-				19162E3D1C32546D00BB3BD4 /* FlashCards.xcdatamodeld */,
 				196CBD161C32686400302FE3 /* Fonts */,
 			);
 			path = FlashCards;
@@ -210,12 +210,12 @@
 		19162E691C3254E300BB3BD4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				19162E671C3254D600BB3BD4 /* CoreDataStackManager.swift */,
+				19F0D15E1C3E128100D5D888 /* CoreData */,
 				19162E361C32546D00BB3BD4 /* AppDelegate.swift */,
 				19B020161C3A2834001791D2 /* HTMLScraper */,
 				194331961C33E7F0001ABC7D /* Data */,
 			);
-			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		19162E6B1C3254EF00BB3BD4 /* View */ = {
@@ -225,7 +225,7 @@
 				191E4E581C38C49600C3686D /* Extensions */,
 				191E4E591C38C4A700C3686D /* UI Configuration */,
 			);
-			name = View;
+			path = View;
 			sourceTree = "<group>";
 		};
 		19162E6C1C3254F500BB3BD4 /* Controller */ = {
@@ -243,6 +243,7 @@
 				191E4E5A1C38DC0C00C3686D /* FullTestViewController.swift */,
 			);
 			name = Controller;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		191E4E571C38C47F00C3686D /* Collection View Cells */ = {
@@ -254,7 +255,7 @@
 				19E7BC511C37678A0079A1EF /* CardCollectionViewCell.swift */,
 				19ED4D441C38BE9600CA2E1E /* TestCollectionViewCell.swift */,
 			);
-			name = "Collection View Cells";
+			path = "Collection View Cells";
 			sourceTree = "<group>";
 		};
 		191E4E581C38C49600C3686D /* Extensions */ = {
@@ -264,7 +265,7 @@
 				19ED4D461C38C18A00CA2E1E /* LabelExtension.swift */,
 				19B0206B1C3B7C33001791D2 /* ButtonExtension.swift */,
 			);
-			name = Extensions;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		191E4E591C38C4A700C3686D /* UI Configuration */ = {
@@ -273,7 +274,7 @@
 				19ED4D3E1C38B52800CA2E1E /* ConfigureCollectionView.swift */,
 				19ED4D401C38B66400CA2E1E /* ConfigureNavigationBar.swift */,
 			);
-			name = "UI Configuration";
+			path = "UI Configuration";
 			sourceTree = "<group>";
 		};
 		194331961C33E7F0001ABC7D /* Data */ = {
@@ -283,7 +284,7 @@
 				194331991C33F0E0001ABC7D /* FlashCard.swift */,
 				19E7BC5B1C378D620079A1EF /* Subject.swift */,
 			);
-			name = Data;
+			path = Data;
 			sourceTree = "<group>";
 		};
 		196CBD161C32686400302FE3 /* Fonts */ = {
@@ -295,6 +296,7 @@
 				196CBD1A1C326AB900302FE3 /* Futura (Light).ttf */,
 			);
 			name = Fonts;
+			path = Resources/Fonts;
 			sourceTree = "<group>";
 		};
 		19B020161C3A2834001791D2 /* HTMLScraper */ = {
@@ -303,12 +305,12 @@
 				19B020171C3A2851001791D2 /* HTMLScraper.swift */,
 			);
 			name = HTMLScraper;
+			path = HTMLScrapers;
 			sourceTree = "<group>";
 		};
 		19B020361C3A295B001791D2 /* TFHpple */ = {
 			isa = PBXGroup;
 			children = (
-				19F0D15D1C3E0ED500D5D888 /* FlashCards-Bridging-Header.h */,
 				19B020581C3B6D6A001791D2 /* TFHpple.h */,
 				19B020591C3B6D6A001791D2 /* TFHpple.m */,
 				19B0205A1C3B6D6A001791D2 /* TFHppleElement.h */,
@@ -317,6 +319,16 @@
 				19B0205D1C3B6D6A001791D2 /* XPathQuery.m */,
 			);
 			name = TFHpple;
+			path = FlashCards/Resources/TFHpple;
+			sourceTree = SOURCE_ROOT;
+		};
+		19F0D15E1C3E128100D5D888 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				19162E671C3254D600BB3BD4 /* CoreDataStackManager.swift */,
+				19162E3D1C32546D00BB3BD4 /* FlashCards.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -630,7 +642,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = FlashCards/FlashCards.entitlements;
+				CODE_SIGN_ENTITLEMENTS = FlashCards/Model/CoreData/FlashCards.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"HEADER_SEARCH_PATHS[arch=*]" = "$(SDKROOT)/usr/include/libxml2";
@@ -650,7 +662,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = FlashCards/FlashCards.entitlements;
+				CODE_SIGN_ENTITLEMENTS = FlashCards/Model/CoreData/FlashCards.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"HEADER_SEARCH_PATHS[arch=*]" = "$(SDKROOT)/usr/include/libxml2";
