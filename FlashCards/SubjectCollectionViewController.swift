@@ -174,23 +174,22 @@ class SubjectCollectionViewController: UICollectionViewController, UIGestureReco
     // MARK: Notification Center
     func subscribeToPersistentStoreCoordinatorStoresNotifications() {
         
+        // Subscribe for first time setup of iCloud
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "enableUI", name: NSPersistentStoreCoordinatorStoresDidChangeNotification, object: sharedContext.persistentStoreCoordinator)
         NSNotificationCenter.defaultCenter().addObserverForName(NSPersistentStoreCoordinatorStoresWillChangeNotification, object: sharedContext.persistentStoreCoordinator, queue: NSOperationQueue.mainQueue()) { notification in
             
             // First reset the managed object context
             self.sharedContext.performBlock() {
-                print("==================Resetting the context==========================")
+                print("=== RESETTING CONTEXT ===")
                 self.sharedContext.reset()
             }
             
             // Then disable UI
             dispatch_async(dispatch_get_main_queue()) {
+                print("=== DISABLING UI===")
                 self.disableUI()
             }
         }
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "enableUI", name: NSPersistentStoreCoordinatorStoresDidChangeNotification, object: sharedContext.persistentStoreCoordinator)
-        
-        
     }
     
     func unsubscribeFromPersistentStoreCoordinatorStoresNotifications() {
@@ -199,13 +198,15 @@ class SubjectCollectionViewController: UICollectionViewController, UIGestureReco
     }
 
     func enableUI() {
-        print("==============enabling UI===================")
+        print("=== ENABLING UI===")
+        self.view.alpha = 1.0
         subjects = fetchAllSubjects()
         self.collectionView?.reloadData()
         appDelegate.window?.userInteractionEnabled = true
     }
     
     func disableUI() {
+        self.view.alpha = 0.5
         appDelegate.window?.userInteractionEnabled = false
     }
 

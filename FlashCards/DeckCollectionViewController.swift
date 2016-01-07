@@ -51,7 +51,7 @@ class DeckCollectionViewController: UICollectionViewController {
     
     func configureNavigationBar() {
         self.navigationController?.navigationBar.blackTransparentWithWhiteTint()
-        self.navigationItem.title = "Deck"
+        self.navigationItem.title = "Decks"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addDeck")
     }
     

@@ -124,6 +124,12 @@ class DetailDeckViewController: UICollectionViewController {
             cardCollectionViewController.deck = self.deck
             self.navigationController?.pushViewController(cardCollectionViewController, animated: true)
         }
+        else if userActions[indexPath.row] == "Add cards before testing" {
+            let addCardViewController = self.storyboard?.instantiateViewControllerWithIdentifier("addCardViewController") as! AddCardViewController
+            addCardViewController.deck = self.deck
+            let addCardNavigationController = UINavigationController(rootViewController: addCardViewController)
+            self.presentViewController(addCardNavigationController, animated: true, completion: nil)
+        }
         else if userActions[indexPath.row] == "Test" {
             if deck.flashCards?.count == 0 {
                 let cardCollectionViewController = self.storyboard?.instantiateViewControllerWithIdentifier("cardCollectionViewController") as! CardCollectionViewController
