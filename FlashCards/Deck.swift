@@ -12,7 +12,7 @@ import CoreData
 class Deck : NSManagedObject {
     @NSManaged var name : String!
     @NSManaged var detail : String?
-    @NSManaged var flashCards : [FlashCard]?
+    @NSManaged var flashCards : NSSet?
     @NSManaged var subject : Subject!
     
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {

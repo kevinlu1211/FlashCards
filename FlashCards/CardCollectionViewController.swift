@@ -90,7 +90,7 @@ class CardCollectionViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CardCollectionViewCell
     
-        let card = deck.flashCards![indexPath.row]
+        let card = getCard(indexPath.row)
 
         // Configure the cell
         cell.phraseLabel.text = card.phrase
@@ -110,11 +110,16 @@ class CardCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let card = deck.flashCards![indexPath.row]
+        let card = getCard(indexPath.row)
         let detailCardViewController = self.storyboard?.instantiateViewControllerWithIdentifier("detailCardViewController") as! DetailCardViewController
         detailCardViewController.card = card
         self.navigationController?.pushViewController(detailCardViewController, animated: true)
         
+    }
+    // MARK: - Convert NSSet to Array
+    func getCard(index : Int) -> FlashCard {
+        let cards = deck.flashCards?.allObjects as! [FlashCard]
+        return cards[index]
     }
     // MARK: UICollectionViewDelegate
 

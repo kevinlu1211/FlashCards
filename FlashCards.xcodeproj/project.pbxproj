@@ -87,6 +87,7 @@
 		192CFA0F1C37AD4900ED4585 /* AddCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
 		194331971C33E804001ABC7D /* Deck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		194331991C33F0E0001ABC7D /* FlashCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCard.swift; sourceTree = "<group>"; };
+		19484F4B1C3CFFD4001207DD /* FlashCards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = FlashCards.entitlements; sourceTree = "<group>"; };
 		196CBD111C325F5B00302FE3 /* DeckCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckCollectionViewController.swift; sourceTree = "<group>"; };
 		196CBD131C32686100302FE3 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		196CBD141C32686100302FE3 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -173,6 +174,7 @@
 		19162E351C32546D00BB3BD4 /* FlashCards */ = {
 			isa = PBXGroup;
 			children = (
+				19484F4B1C3CFFD4001207DD /* FlashCards.entitlements */,
 				19B020361C3A295B001791D2 /* TFHpple */,
 				19162E691C3254E300BB3BD4 /* Model */,
 				19162E6B1C3254EF00BB3BD4 /* View */,
@@ -385,6 +387,12 @@
 				TargetAttributes = {
 					19162E321C32546D00BB3BD4 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 75W8CPN6HK;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					19162E491C32546D00BB3BD4 = {
 						CreatedOnToolsVersion = 7.2;
@@ -622,12 +630,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = FlashCards/FlashCards.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"HEADER_SEARCH_PATHS[arch=*]" = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = FlashCards/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				"OTHER_LDFLAGS[arch=*]" = "-lxml2";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kevinlu.FlashCards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "FlashCards-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -638,12 +650,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = FlashCards/FlashCards.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"HEADER_SEARCH_PATHS[arch=*]" = "$(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = FlashCards/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				"OTHER_LDFLAGS[arch=*]" = "-lxml2";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kevinlu.FlashCards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "FlashCards-Bridging-Header.h";
 			};
 			name = Release;

@@ -118,6 +118,14 @@ class DetailDeckViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UserActionCollectionViewCell
         print(cell.userActionLabel.text)
         print(indexPath.row)
+        
+//        if cell.userActionLabel.text == "Add cards before testing" {
+//            let addCardViewController = self.storyboard?.instantiateViewControllerWithIdentifier("addCardViewController") as! AddCardViewController
+//            addCardViewController.deck = self.deck
+//            let addCardNavigationController = UINavigationController(rootViewController: addCardViewController)
+//            self.presentViewController(addCardNavigationController, animated: true, completion: nil)
+//        }
+
         if userActions[indexPath.row] == "View Deck" {
             print("here")
             let cardCollectionViewController = self.storyboard?.instantiateViewControllerWithIdentifier("cardCollectionViewController") as! CardCollectionViewController
