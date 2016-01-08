@@ -8,11 +8,11 @@
 
 import Foundation
 
-class HTMLScraper {
+class MDBGScraper {
     
-    class func sharedInstance() -> HTMLScraper {
+    class func sharedInstance() -> MDBGScraper {
         struct Singleton {
-            static var sharedInstance = HTMLScraper()
+            static var sharedInstance = MDBGScraper()
         }
         return Singleton.sharedInstance
     }

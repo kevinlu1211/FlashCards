@@ -20,9 +20,9 @@ class AddCardViewController: UIViewController, UITextViewDelegate {
     lazy var sharedContext : NSManagedObjectContext = {
         CoreDataStackManager.sharedInstance().managedObjectContext
     }()
-    var results : [String: [String]]?
-    var resultIndex = 0
-    var maxIndex : Int!
+    var scraperResults : [String: [String]]?
+    var scraperResultIndex = 0
+    var scraperMaxIndex : Int!
     
     // MARK: - UI Variables
     @IBOutlet weak var toolbar: UIToolbar!
@@ -38,6 +38,12 @@ class AddCardViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var previousResultButton: UIButton!
     @IBOutlet weak var nextResultButton: UIButton!
     @IBOutlet weak var searchWordButton: UIBarButtonItem!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    
+    @IBOutlet weak var topConstraintActivity: NSLayoutConstraint!
+    @IBOutlet weak var bottomConstraintActivity: NSLayoutConstraint!
+    
+    @IBOutlet weak var languageButton: UIBarButtonItem!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -63,7 +69,6 @@ class AddCardViewController: UIViewController, UITextViewDelegate {
         // Add tapview to view
         let tapView = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         self.view.addGestureRecognizer(tapView)
-
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "woodenBackground")!)
         
         // Configure the cardView
@@ -204,65 +209,77 @@ class AddCardViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func previousResult(sender: AnyObject) {
         // Reduce the index by one and enable next button
-        resultIndex -= 1
+        scraperResultIndex -= 1
         nextResultButton.enableButton()
-        if (resultIndex == 0) {
+        if (scraperResultIndex == 0) {
             previousResultButton.disableButton()
         }
        
-        let pinyinArray = self.results!["pinyin"]
-        let definitionArray = self.results!["definition"]
-        pronunciationTextView.text = pinyinArray![resultIndex]
-        definitionTextView.text = definitionArray![resultIndex]
+        let pinyinArray = self.scraperResults!["pinyin"]
+        let definitionArray = self.scraperResults!["definition"]
+        pronunciationTextView.text = pinyinArray![scraperResultIndex]
+        definitionTextView.text = definitionArray![scraperResultIndex]
     }
     
     @IBAction func nextResult(sender: AnyObject) {
-        resultIndex += 1
+        scraperResultIndex += 1
         previousResultButton.enableButton()
-        if (resultIndex == maxIndex) {
+        if (scraperResultIndex == scraperMaxIndex) {
             nextResultButton.disableButton()
         }
-        let pinyinArray = self.results!["pinyin"]
-        let definitionArray = self.results!["definition"]
-        pronunciationTextView.text = pinyinArray![resultIndex]
-        definitionTextView.text = definitionArray![resultIndex]
+        let pinyinArray = self.scraperResults!["pinyin"]
+        let definitionArray = self.scraperResults!["definition"]
+        pronunciationTextView.text = pinyinArray![scraperResultIndex]
+        definitionTextView.text = definitionArray![scraperResultIndex]
     }
     @IBAction func searchWord(sender: AnyObject) {
         
         // Before searching remove all the values from dictionary
-        if results != nil {
-            results?.removeAll()
+        if scraperResults != nil {
+            scraperResults?.removeAll()
         }
+        
+
+        // Switch the search button with activity indicator
+        activityIndicatorView.startAnimating()
+        searchWordButton.enabled = false
+        searchWordButton.tintColor = UIColor.clearColor()
         
         // Go to background queue to scrape HTML code
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
             // Get the results
-            self.results = HTMLScraper.sharedInstance().retrieveData(self.phraseTextView.text)
-            self.resultIndex = 0
-            self.maxIndex = (self.results!["pinyin"]?.count)! - 1
+            self.scraperResults = MDBGScraper.sharedInstance().retrieveData(self.phraseTextView.text)
+            self.scraperResultIndex = 0
+            self.scraperMaxIndex = (self.scraperResults!["pinyin"]?.count)! - 1
             
             // Update UI
-            if self.maxIndex > -1 {
+            if self.scraperMaxIndex > -1 {
                 dispatch_async(dispatch_get_main_queue()) {
-                    self.pronunciationTextView.text = self.results!["pinyin"]![self.resultIndex]
+                    self.pronunciationTextView.text = self.scraperResults!["pinyin"]![self.scraperResultIndex]
                     self.pronunciationTextView.textColor = UIColor.blackColor()
-                    self.definitionTextView.text = self.results!["definition"]![self.resultIndex]
+                    self.definitionTextView.text = self.scraperResults!["definition"]![self.scraperResultIndex]
                     self.definitionTextView.textColor = UIColor.blackColor()
-                    if self.maxIndex > 0 {
+                    if self.scraperMaxIndex > 0 {
                         self.showButtons()
                         self.nextResultButton.enableButton()
                     }
+                    self.activityIndicatorView.stopAnimating()
+                    self.searchWordButton.enabled = true
+                    self.searchWordButton.tintColor = UIColor.whiteColor()
                 }
             }
             else {
                 dispatch_async(dispatch_get_main_queue()) {
-                    let alertController = UIAlertController(title: "", message: "Can't find word in dictionary", preferredStyle: .ActionSheet)
+                    let alertController = UIAlertController(title: "", message: "Can't find word in dictionary or check internet connection", preferredStyle: .ActionSheet)
                     let okAction = UIAlertAction(title: "Ok", style: .Default) {
                         (action) -> Void in
                     }
                     alertController.addAction(okAction)
                     self.presentViewController(alertController, animated: true, completion: nil)
-                    
+                    self.activityIndicatorView.stopAnimating()
+                    self.searchWordButton.enabled = true
+                    self.searchWordButton.tintColor = UIColor.whiteColor()
+
                 }
                 
             }

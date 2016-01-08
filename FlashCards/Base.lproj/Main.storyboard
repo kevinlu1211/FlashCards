@@ -224,7 +224,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="testCell" id="W85-1m-xK3" customClass="TestCollectionViewCell" customModule="FlashCards" customModuleProvider="target">
-                                <rect key="frame" x="32.5" y="0.0" width="310" height="90"/>
+                                <rect key="frame" x="33" y="0.0" width="310" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="310" height="90"/>
@@ -669,7 +669,7 @@
                                 </constraints>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nNi-Fc-sHV">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="623" width="375" height="45"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="2Kd-Dc-Bkd"/>
                                     <barButtonItem systemItem="search" id="XNT-gC-mQX">
@@ -679,18 +679,28 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="8Uh-4E-HM3"/>
+                                    <barButtonItem title="Language" id="n3z-5u-lpr">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="4hC-rx-Wro">
+                                <rect key="frame" x="177" y="636" width="20" height="20"/>
+                                <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="4hC-rx-Wro" firstAttribute="top" secondItem="eR0-I0-Tii" secondAttribute="bottom" constant="154" id="0aK-Cb-w6u"/>
                             <constraint firstItem="eR0-I0-Tii" firstAttribute="centerX" secondItem="gvl-oV-3gn" secondAttribute="centerX" id="FuN-Ad-1Gq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="US3-gA-qNl" secondAttribute="trailing" constant="46" id="GhE-I5-U7x"/>
                             <constraint firstItem="US3-gA-qNl" firstAttribute="width" secondItem="eR0-I0-Tii" secondAttribute="width" id="KuP-gG-e2w"/>
-                            <constraint firstItem="jZ9-tH-Yfz" firstAttribute="top" secondItem="nNi-Fc-sHV" secondAttribute="bottom" id="QuB-G0-dn7"/>
+                            <constraint firstItem="jZ9-tH-Yfz" firstAttribute="top" secondItem="nNi-Fc-sHV" secondAttribute="bottom" constant="-1" id="QuB-G0-dn7"/>
                             <constraint firstItem="eR0-I0-Tii" firstAttribute="top" secondItem="mgc-yD-wvs" secondAttribute="bottom" constant="50" id="RCy-38-7za"/>
                             <constraint firstItem="eR0-I0-Tii" firstAttribute="centerX" secondItem="gvl-oV-3gn" secondAttribute="centerX" id="UsB-Uf-DKb"/>
                             <constraint firstItem="US3-gA-qNl" firstAttribute="leading" secondItem="gvl-oV-3gn" secondAttribute="leadingMargin" constant="46" id="Wby-Uy-t6V"/>
+                            <constraint firstItem="4hC-rx-Wro" firstAttribute="centerX" secondItem="gvl-oV-3gn" secondAttribute="centerX" id="d2g-tW-dGH"/>
+                            <constraint firstItem="nNi-Fc-sHV" firstAttribute="top" secondItem="4hC-rx-Wro" secondAttribute="bottom" constant="-33" id="exI-jm-ptE"/>
                             <constraint firstItem="US3-gA-qNl" firstAttribute="width" secondItem="eR0-I0-Tii" secondAttribute="width" id="iuN-1K-ILh"/>
                             <constraint firstAttribute="trailing" secondItem="nNi-Fc-sHV" secondAttribute="trailing" id="kgC-c9-pUE"/>
                             <constraint firstItem="US3-gA-qNl" firstAttribute="centerX" secondItem="gvl-oV-3gn" secondAttribute="centerX" id="n7Y-Sa-juL"/>
@@ -710,9 +720,12 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="4hC-rx-Wro" id="ZtS-BO-8LP"/>
+                        <outlet property="bottomConstraintActivity" destination="exI-jm-ptE" id="ifF-ZM-b2Z"/>
                         <outlet property="cardView" destination="eR0-I0-Tii" id="Dmq-Qh-PqM"/>
                         <outlet property="definitionLabel" destination="ma2-2b-G9M" id="tCe-dm-u4j"/>
                         <outlet property="definitionTextView" destination="UZ0-6u-wI5" id="Hlb-rR-cwa"/>
+                        <outlet property="languageButton" destination="n3z-5u-lpr" id="bCw-vw-48r"/>
                         <outlet property="nextResultButton" destination="tlt-Nb-i2c" id="VPQ-Hs-KJm"/>
                         <outlet property="phraseLabel" destination="cT6-nB-2yY" id="fMY-sk-ad3"/>
                         <outlet property="phraseTextView" destination="6qj-UD-xjn" id="b6X-hp-Sf0"/>
@@ -721,6 +734,7 @@
                         <outlet property="pronunciationTextView" destination="JC4-ef-Iex" id="4J5-Oc-Cnh"/>
                         <outlet property="searchWordButton" destination="XNT-gC-mQX" id="yFV-wX-IZ9"/>
                         <outlet property="toolbar" destination="nNi-Fc-sHV" id="y3H-hT-ouF"/>
+                        <outlet property="topConstraintActivity" destination="0aK-Cb-w6u" id="UcO-i9-DtJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MBb-gc-Kl7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -849,7 +863,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RJr-4g-nLg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2153.5" y="672.5"/>
+            <point key="canvasLocation" x="2135.5" y="1008.5"/>
         </scene>
     </scenes>
 </document>

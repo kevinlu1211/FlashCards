@@ -27,7 +27,7 @@
 		196CBD1B1C326AB900302FE3 /* Futura (Light).ttf in Resources */ = {isa = PBXBuildFile; fileRef = 196CBD1A1C326AB900302FE3 /* Futura (Light).ttf */; };
 		196CBD1F1C3281B200302FE3 /* DeckCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196CBD1E1C3281B200302FE3 /* DeckCollectionViewCell.swift */; };
 		196CBD231C3299E700302FE3 /* AddDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196CBD221C3299E600302FE3 /* AddDeckViewController.swift */; };
-		19B020181C3A2851001791D2 /* HTMLScraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B020171C3A2851001791D2 /* HTMLScraper.swift */; };
+		19B020181C3A2851001791D2 /* MDBGScraper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B020171C3A2851001791D2 /* MDBGScraper.swift */; };
 		19B0205E1C3B6D6A001791D2 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B020591C3B6D6A001791D2 /* TFHpple.m */; };
 		19B0205F1C3B6D6A001791D2 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B0205B1C3B6D6A001791D2 /* TFHppleElement.m */; };
 		19B020601C3B6D6A001791D2 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B0205D1C3B6D6A001791D2 /* XPathQuery.m */; };
@@ -48,6 +48,9 @@
 		19ED4D431C38BE5D00CA2E1E /* TestCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19ED4D421C38BE5D00CA2E1E /* TestCollectionViewController.swift */; };
 		19ED4D451C38BE9600CA2E1E /* TestCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19ED4D441C38BE9600CA2E1E /* TestCollectionViewCell.swift */; };
 		19ED4D471C38C18A00CA2E1E /* LabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19ED4D461C38C18A00CA2E1E /* LabelExtension.swift */; };
+		19F0D1A41C3F9BEA00D5D888 /* PearsonClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F0D1A21C3F9BEA00D5D888 /* PearsonClient.swift */; };
+		19F0D1A51C3F9BEA00D5D888 /* PearsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F0D1A31C3F9BEA00D5D888 /* PearsonData.swift */; };
+		19F0D1A71C3F9D7D00D5D888 /* MDBGData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F0D1A61C3F9D7D00D5D888 /* MDBGData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,7 +98,7 @@
 		196CBD1A1C326AB900302FE3 /* Futura (Light).ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Futura (Light).ttf"; sourceTree = "<group>"; };
 		196CBD1E1C3281B200302FE3 /* DeckCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckCollectionViewCell.swift; sourceTree = "<group>"; };
 		196CBD221C3299E600302FE3 /* AddDeckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeckViewController.swift; sourceTree = "<group>"; };
-		19B020171C3A2851001791D2 /* HTMLScraper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLScraper.swift; sourceTree = "<group>"; };
+		19B020171C3A2851001791D2 /* MDBGScraper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDBGScraper.swift; sourceTree = "<group>"; };
 		19B020581C3B6D6A001791D2 /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
 		19B020591C3B6D6A001791D2 /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
 		19B0205A1C3B6D6A001791D2 /* TFHppleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHppleElement.h; sourceTree = "<group>"; };
@@ -120,6 +123,9 @@
 		19ED4D441C38BE9600CA2E1E /* TestCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCollectionViewCell.swift; sourceTree = "<group>"; };
 		19ED4D461C38C18A00CA2E1E /* LabelExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelExtension.swift; sourceTree = "<group>"; };
 		19F0D15D1C3E0ED500D5D888 /* FlashCards-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "FlashCards-Bridging-Header.h"; path = "/Users/kevinlu/Documents/iOS/FlashCards/FlashCards/FlashCards-Bridging-Header.h"; sourceTree = "<absolute>"; };
+		19F0D1A21C3F9BEA00D5D888 /* PearsonClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PearsonClient.swift; sourceTree = "<group>"; };
+		19F0D1A31C3F9BEA00D5D888 /* PearsonData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PearsonData.swift; sourceTree = "<group>"; };
+		19F0D1A61C3F9D7D00D5D888 /* MDBGData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDBGData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,7 +218,8 @@
 			children = (
 				19F0D15E1C3E128100D5D888 /* CoreData */,
 				19162E361C32546D00BB3BD4 /* AppDelegate.swift */,
-				19B020161C3A2834001791D2 /* HTMLScraper */,
+				19F0D1A01C3F9BB800D5D888 /* DictionaryAPIs */,
+				19B020161C3A2834001791D2 /* HTMLScrapers */,
 				194331961C33E7F0001ABC7D /* Data */,
 			);
 			path = Model;
@@ -299,12 +306,11 @@
 			path = Resources/Fonts;
 			sourceTree = "<group>";
 		};
-		19B020161C3A2834001791D2 /* HTMLScraper */ = {
+		19B020161C3A2834001791D2 /* HTMLScrapers */ = {
 			isa = PBXGroup;
 			children = (
-				19B020171C3A2851001791D2 /* HTMLScraper.swift */,
+				19F0D1A81C3F9DCF00D5D888 /* MDBGScraper */,
 			);
-			name = HTMLScraper;
 			path = HTMLScrapers;
 			sourceTree = "<group>";
 		};
@@ -329,6 +335,33 @@
 				19162E3D1C32546D00BB3BD4 /* FlashCards.xcdatamodeld */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		19F0D1A01C3F9BB800D5D888 /* DictionaryAPIs */ = {
+			isa = PBXGroup;
+			children = (
+				19F0D1A11C3F9BD000D5D888 /* PearsonAPI */,
+			);
+			name = DictionaryAPIs;
+			path = HTMLScrapers;
+			sourceTree = "<group>";
+		};
+		19F0D1A11C3F9BD000D5D888 /* PearsonAPI */ = {
+			isa = PBXGroup;
+			children = (
+				19F0D1A21C3F9BEA00D5D888 /* PearsonClient.swift */,
+				19F0D1A31C3F9BEA00D5D888 /* PearsonData.swift */,
+			);
+			name = PearsonAPI;
+			sourceTree = "<group>";
+		};
+		19F0D1A81C3F9DCF00D5D888 /* MDBGScraper */ = {
+			isa = PBXGroup;
+			children = (
+				19B020171C3A2851001791D2 /* MDBGScraper.swift */,
+				19F0D1A61C3F9D7D00D5D888 /* MDBGData.swift */,
+			);
+			name = MDBGScraper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -480,6 +513,7 @@
 				19E7BC561C378C8A0079A1EF /* SubjectCollectionViewController.swift in Sources */,
 				19B0205F1C3B6D6A001791D2 /* TFHppleElement.m in Sources */,
 				19E7BC4C1C3760720079A1EF /* UserActionCollectionViewCell.swift in Sources */,
+				19F0D1A41C3F9BEA00D5D888 /* PearsonClient.swift in Sources */,
 				19ED4D471C38C18A00CA2E1E /* LabelExtension.swift in Sources */,
 				196CBD121C325F5B00302FE3 /* DeckCollectionViewController.swift in Sources */,
 				19ED4D3F1C38B52800CA2E1E /* ConfigureCollectionView.swift in Sources */,
@@ -488,7 +522,7 @@
 				19E7BC521C37678A0079A1EF /* CardCollectionViewCell.swift in Sources */,
 				1943319A1C33F0E0001ABC7D /* FlashCard.swift in Sources */,
 				19E7BC481C375CC80079A1EF /* DetailDeckViewController.swift in Sources */,
-				19B020181C3A2851001791D2 /* HTMLScraper.swift in Sources */,
+				19B020181C3A2851001791D2 /* MDBGScraper.swift in Sources */,
 				19E7BC581C378CD80079A1EF /* SubjectCollectionViewCell.swift in Sources */,
 				19E7BC541C3767970079A1EF /* CardCollectionViewController.swift in Sources */,
 				19ED4D431C38BE5D00CA2E1E /* TestCollectionViewController.swift in Sources */,
@@ -500,7 +534,9 @@
 				196CBD1F1C3281B200302FE3 /* DeckCollectionViewCell.swift in Sources */,
 				19162E371C32546D00BB3BD4 /* AppDelegate.swift in Sources */,
 				19ED4D3D1C38AFAE00CA2E1E /* UIViewExtensions.swift in Sources */,
+				19F0D1A71C3F9D7D00D5D888 /* MDBGData.swift in Sources */,
 				19162E681C3254D600BB3BD4 /* CoreDataStackManager.swift in Sources */,
+				19F0D1A51C3F9BEA00D5D888 /* PearsonData.swift in Sources */,
 				19B0205E1C3B6D6A001791D2 /* TFHpple.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
