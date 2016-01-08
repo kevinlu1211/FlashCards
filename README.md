@@ -17,8 +17,11 @@ After your deck is created you can click on it and it will take you to a view th
 
 ----
 ## Adding cards to your deck
-Right now there is only automatic fill-in for Chinese (although I will be adding support for more languages in the future).
+Right now there is only automatic fill-in for Chinese and English (although I will be adding support for more languages in the future).
 
-To use this: 
+The Chinese automatic fill-in uses: [MDBG's Online Dictionary](http://chinesedictionary.mobi/)
+The English automatic fill-in uses: [Pearson's dictionary API](http://developer.pearson.com/apis/dictionaries)
 
-Write any Chinese word that you want the meaning of e.g. 人家 and press the Search button on the button of the view that creates cards. The pronunciation and definition text views will load automatically (via scraping the source code of a website). If the word has more than one definition/pronunciation you will be able to cycle through them until you find the desired one. 
+To automatic fill-in: 
+
+Write any word you desire (that is supported)that you want the meaning of e.g. 人家 and press the Search button on the button of the view that creates cards. The pronunciation and definition text views will load automatically. If the word has more than one definition/pronunciation you will be able to cycle through them until you find the desired one. 
