@@ -18,35 +18,85 @@ class MDBGScraper {
     }
 
     
-    func retrieveData(chineseWord : String) -> [String : [String]]{
+    func retrieveData(chineseWord : String, completionHandler : (success : Bool, data : [MDBGData]?, errorString : String?) -> Void) {
         let baseURL = "http://chinesedictionary.mobi/?handler=QueryWorddict&mwdqb="
         let query = convertToUTF8Encoding(chineseWord)
         let urlString = baseURL + query
-        let url = NSURL(string: urlString)!
-        var dict = ["pinyin" : [String](), "definition" : [String]()]
-        let dataObject = NSData(contentsOfURL: url)
-        let doc = TFHpple(HTMLData: dataObject)
+        let url = NSURL(string: urlString)
         
-        // Scraping definition from source code
-        if let pinyinArray = doc.searchWithXPathQuery("//td[@class='pinyin']") as? [TFHppleElement] {
-            for pinyin in pinyinArray {
-                let pinyinContent = pinyin.content
-                let strippedPinyin = pinyinContent.stringByReplacingOccurrencesOfString("\n", withString: "")
-                dict["pinyin"]?.append(strippedPinyin)
-                
+        var headwordResults = [String]()
+        var pronunciationResults = [String]()
+        var definitionResults = [String]()
+        
+        var MDBGResults = [MDBGData]()
+        
+        let dataObject = NSData(contentsOfURL: url!)
+        
+        if let dataObject = dataObject {
+            
+            // Scraping definition from source code
+            let doc = TFHpple(HTMLData: dataObject)
+            
+            if let chineseArray = doc.searchWithXPathQuery("//td [@class='chinese']") as? [TFHppleElement] {
+                for chinese in chineseArray {
+                    let chineseContent = chinese.content
+                    let strippedChinese = chineseContent.stringByReplacingOccurrencesOfString("\n", withString : "")
+                    headwordResults.append(strippedChinese)
+                }
             }
+            else {
+                completionHandler(success: false, data: nil, errorString: "There was an error in reading the website")
+                return
+            }
+            
+            if let pinyinArray = doc.searchWithXPathQuery("//td[@class='pinyin']") as? [TFHppleElement] {
+                for pinyin in pinyinArray {
+                    let pinyinContent = pinyin.content
+                    let strippedPinyin = pinyinContent.stringByReplacingOccurrencesOfString("\n", withString: "")
+                    pronunciationResults.append(strippedPinyin)
+                    
+                }
+            }
+            else {
+                completionHandler(success: false, data: nil, errorString: "There was an error in reading the website")
+                return
+            }
+            
+            if let definitionArray = doc.searchWithXPathQuery("//td[@class='english']") as? [TFHppleElement] {
+                for definition in definitionArray {
+                    let definitionContent = definition.content
+                    let strippedDefinition = definitionContent.stringByReplacingOccurrencesOfString("\n", withString: "")
+                    definitionResults.append(strippedDefinition)
+                }
+            }
+            else {
+                completionHandler(success: false, data: nil, errorString: "There was an error in reading the website")
+                return
+            }
+            
+        }
+        else {
+            completionHandler(success: false, data: nil, errorString: "There was an error in retrieving the webpage")
+            return
         }
         
-        // Scraping definition from source code
-        if let definitionArray = doc.searchWithXPathQuery("//td[@class='english']") as? [TFHppleElement] {
-            for definition in definitionArray {
-                let definitionContent = definition.content
-                let strippedDefinition = definitionContent.stringByReplacingOccurrencesOfString("\n", withString: "")
-                dict["definition"]?.append(strippedDefinition)
+        // Now that we have all the results make them into an array of MDBGData's
+        let numberOfResults = headwordResults.count
+        if numberOfResults <= 0 {
+            completionHandler(success: false, data: nil, errorString: "No results were found")
+        }
+        else {
+            for index in 0...(numberOfResults - 1) {
+                MDBGResults.append(MDBGData(headWord: headwordResults[index], pronunciation: pronunciationResults[index], definition: definitionResults[index]))
             }
         }
-        return dict
+         completionHandler(success: true, data: MDBGResults, errorString: nil)
+       
+        
     }
+
+    
+    
     func convertToUTF8Encoding(chineseWord : String) -> String {
         let utf8EncodingForChineseWord = String(chineseWord.dataUsingEncoding(NSUTF8StringEncoding)!)
         print(utf8EncodingForChineseWord)

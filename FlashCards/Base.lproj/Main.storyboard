@@ -224,7 +224,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="testCell" id="W85-1m-xK3" customClass="TestCollectionViewCell" customModule="FlashCards" customModuleProvider="target">
-                                <rect key="frame" x="33" y="0.0" width="310" height="90"/>
+                                <rect key="frame" x="32.5" y="0.0" width="310" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="310" height="90"/>
@@ -681,6 +681,9 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="8Uh-4E-HM3"/>
                                     <barButtonItem title="Language" id="n3z-5u-lpr">
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="changeLanguage:" destination="WN3-RU-jQZ" id="PeL-zp-U3b"/>
+                                        </connections>
                                     </barButtonItem>
                                 </items>
                             </toolbar>

@@ -8,6 +8,11 @@
 
 import UIKit
 import CoreData
+
+enum Language {
+    case Chinese
+    case English
+}
 class AddCardViewController: UIViewController, UITextViewDelegate {
     
     // MARK: - Constant
@@ -20,9 +25,10 @@ class AddCardViewController: UIViewController, UITextViewDelegate {
     lazy var sharedContext : NSManagedObjectContext = {
         CoreDataStackManager.sharedInstance().managedObjectContext
     }()
-    var scraperResults : [String: [String]]?
-    var scraperResultIndex = 0
-    var scraperMaxIndex : Int!
+    var results : [NSObject]?
+    var resultIndex = 0
+    var maxIndex : Int!
+    var currentLanguage : Language = .English
     
     // MARK: - UI Variables
     @IBOutlet weak var toolbar: UIToolbar!
@@ -124,7 +130,7 @@ class AddCardViewController: UIViewController, UITextViewDelegate {
         // Configure the items
         self.navigationItem.title = "Add your card"
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .Plain, target: self, action: "dismissViewController")
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Card", style: .Plain, target: self, action: "addCard")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .Plain, target: self, action: "addCard")
         
         // Don't want to enable the button if the user didn't enter anything for the phrase
         self.navigationItem.rightBarButtonItem?.enabled = false
@@ -209,85 +215,182 @@ class AddCardViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func previousResult(sender: AnyObject) {
         // Reduce the index by one and enable next button
-        scraperResultIndex -= 1
+        resultIndex -= 1
         nextResultButton.enableButton()
-        if (scraperResultIndex == 0) {
+        if (resultIndex == 0) {
             previousResultButton.disableButton()
         }
        
-        let pinyinArray = self.scraperResults!["pinyin"]
-        let definitionArray = self.scraperResults!["definition"]
-        pronunciationTextView.text = pinyinArray![scraperResultIndex]
-        definitionTextView.text = definitionArray![scraperResultIndex]
+        switch currentLanguage {
+        case .English:
+            let currentResult = results![resultIndex] as! PearsonData
+            phraseTextView.text = currentResult.headWord
+            pronunciationTextView.text = currentResult.pronunciation
+            definitionTextView.text = currentResult.definition
+        case .Chinese:
+            let currentResult = results![resultIndex] as! MDBGData
+            phraseTextView.text = currentResult.headWord
+            pronunciationTextView.text = currentResult.pronunciation
+            definitionTextView.text = currentResult.definition
+        }
+
     }
     
     @IBAction func nextResult(sender: AnyObject) {
-        scraperResultIndex += 1
+        resultIndex += 1
         previousResultButton.enableButton()
-        if (scraperResultIndex == scraperMaxIndex) {
+        if (resultIndex == maxIndex) {
             nextResultButton.disableButton()
         }
-        let pinyinArray = self.scraperResults!["pinyin"]
-        let definitionArray = self.scraperResults!["definition"]
-        pronunciationTextView.text = pinyinArray![scraperResultIndex]
-        definitionTextView.text = definitionArray![scraperResultIndex]
+        
+        switch currentLanguage {
+        case .English:
+            let currentResult = results![resultIndex] as! PearsonData
+            phraseTextView.text = currentResult.headWord
+            pronunciationTextView.text = currentResult.pronunciation
+            definitionTextView.text = currentResult.definition
+        case .Chinese:
+            let currentResult = results![resultIndex] as! MDBGData
+            phraseTextView.text = currentResult.headWord
+            pronunciationTextView.text = currentResult.pronunciation
+            definitionTextView.text = currentResult.definition
+        }
     }
     @IBAction func searchWord(sender: AnyObject) {
         
         // Before searching remove all the values from dictionary
-        if scraperResults != nil {
-            scraperResults?.removeAll()
+        if results != nil {
+            results?.removeAll()
         }
         
-
+        // Then hide buttons 
+        hideButtons()
+        
         // Switch the search button with activity indicator
         activityIndicatorView.startAnimating()
         searchWordButton.enabled = false
         searchWordButton.tintColor = UIColor.clearColor()
         
-        // Go to background queue to scrape HTML code
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
-            // Get the results
-            self.scraperResults = MDBGScraper.sharedInstance().retrieveData(self.phraseTextView.text)
-            self.scraperResultIndex = 0
-            self.scraperMaxIndex = (self.scraperResults!["pinyin"]?.count)! - 1
-            
-            // Update UI
-            if self.scraperMaxIndex > -1 {
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.pronunciationTextView.text = self.scraperResults!["pinyin"]![self.scraperResultIndex]
-                    self.pronunciationTextView.textColor = UIColor.blackColor()
-                    self.definitionTextView.text = self.scraperResults!["definition"]![self.scraperResultIndex]
-                    self.definitionTextView.textColor = UIColor.blackColor()
-                    if self.scraperMaxIndex > 0 {
-                        self.showButtons()
-                        self.nextResultButton.enableButton()
-                    }
-                    self.activityIndicatorView.stopAnimating()
-                    self.searchWordButton.enabled = true
-                    self.searchWordButton.tintColor = UIColor.whiteColor()
-                }
-            }
-            else {
-                dispatch_async(dispatch_get_main_queue()) {
-                    let alertController = UIAlertController(title: "", message: "Can't find word in dictionary or check internet connection", preferredStyle: .ActionSheet)
-                    let okAction = UIAlertAction(title: "Ok", style: .Default) {
-                        (action) -> Void in
-                    }
-                    alertController.addAction(okAction)
-                    self.presentViewController(alertController, animated: true, completion: nil)
-                    self.activityIndicatorView.stopAnimating()
-                    self.searchWordButton.enabled = true
-                    self.searchWordButton.tintColor = UIColor.whiteColor()
-
-                }
-                
-            }
-           
+        switch currentLanguage {
+        case .English:
+            searchEnglish()
+        case .Chinese:
+            searchChinese()
         }
-    
+        
+        
     }
     
+    func searchChinese() {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
+            MDBGScraper.sharedInstance().retrieveData(self.phraseTextView.text) { success, MDBGResults, errorString in
+                
+                if success {
+                    self.results = MDBGResults
+                    self.resultIndex = 0
+                    self.maxIndex = (self.results?.count)! - 1
+                    
+                    // Update UI
+                    if self.maxIndex > -1 {
+                        dispatch_async(dispatch_get_main_queue()) {
+                            self.updateUIAfterDataIsRetrieved()
+                        }
+                    }
+                }
+                else {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.showAlertView(errorString!)
+                        
+                    }
+                }
+            }
+        }
+
+    }
+    func searchEnglish() {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
+            PearsonClient.sharedInstance().retrieveData(self.phraseTextView.text) {
+                success, PearsonResults, errorString in
+                
+                if success {
+                    self.results = PearsonResults
+                    self.resultIndex = 0
+                    self.maxIndex = (self.results?.count)! - 1
+                    
+                    // Update UI
+                    if self.maxIndex > -1 {
+                        dispatch_async(dispatch_get_main_queue()) {
+                            self.updateUIAfterDataIsRetrieved()
+                        }
+                    }
+                }
+                else {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.showAlertView(errorString!)
+                    }
+                }
+            }
+        }
+    }
+    func updateUIAfterDataIsRetrieved() {
+        
+        // Updating the textViews
+        switch currentLanguage{
+        case .English:
+            let currentResult = results![resultIndex] as! PearsonData
+            self.phraseTextView.text = currentResult.headWord
+            self.phraseTextView.textColor = UIColor.blackColor()
+            self.pronunciationTextView.text = currentResult.pronunciation
+            self.pronunciationTextView.textColor = UIColor.blackColor()
+            self.definitionTextView.text = currentResult.definition
+            self.definitionTextView.textColor = UIColor.blackColor()
+       
+        case .Chinese:
+            let currentResult = results![resultIndex] as! MDBGData
+            self.phraseTextView.text = currentResult.headWord
+            self.phraseTextView.textColor = UIColor.blackColor()
+            self.pronunciationTextView.text = currentResult.pronunciation
+            self.pronunciationTextView.textColor = UIColor.blackColor()
+            self.definitionTextView.text = currentResult.definition
+            self.definitionTextView.textColor = UIColor.blackColor()
+        }
+
+        
+        // Updating the Buttons and Toolbar
+        if self.maxIndex > 0 {
+            self.showButtons()
+            self.nextResultButton.enableButton()
+        }
+        
+        self.activityIndicatorView.stopAnimating()
+        self.searchWordButton.enabled = true
+        self.searchWordButton.tintColor = UIColor.whiteColor()
+    }
+    
+    func showAlertView(errorString : String) {
+        let alertController = UIAlertController(title: "", message: errorString, preferredStyle: .ActionSheet)
+        let okAction = UIAlertAction(title: "Ok", style: .Default) {
+            (action) -> Void in
+        }
+        alertController.addAction(okAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
+        self.activityIndicatorView.stopAnimating()
+        self.searchWordButton.enabled = true
+        self.searchWordButton.tintColor = UIColor.whiteColor()
+    }
+    
+    @IBAction func changeLanguage(sender: AnyObject) {
+        let languageController = UIAlertController(title: "", message: "Select your language", preferredStyle: .ActionSheet)
+        let englishAction = UIAlertAction(title: "English", style: .Default) { action -> Void in
+            self.currentLanguage = .English
+        }
+        let chineseAction = UIAlertAction(title: "Chinese", style: .Default) { action -> Void in
+            self.currentLanguage = .Chinese
+        }
+        languageController.addAction(englishAction)
+        languageController.addAction(chineseAction)
+        self.presentViewController(languageController, animated: true, completion: nil)
+    }
 
     // MARK: Keyboard
     
