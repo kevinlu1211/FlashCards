@@ -20,6 +20,7 @@ After your deck is created you can click on it and it will take you to a view th
 Right now there is only automatic fill-in for Chinese and English (although I will be adding support for more languages in the future).
 
 The Chinese automatic fill-in uses: [MDBG's Online Dictionary](http://chinesedictionary.mobi/)
+
 The English automatic fill-in uses: [Pearson's dictionary API](http://developer.pearson.com/apis/dictionaries)
 
 To automatic fill-in: 
