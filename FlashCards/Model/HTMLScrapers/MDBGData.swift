@@ -9,5 +9,12 @@
 import Foundation
 
 class MDBGData: NSObject {
-    
+    var headWord : String!
+    var pronunciation : String?
+    var definition : String?
+    init(headWord : String, pronunciation : String, definition : String) {
+        self.headWord = headWord
+        self.pronunciation = pronunciation
+        self.definition = definition
+    }
 }
