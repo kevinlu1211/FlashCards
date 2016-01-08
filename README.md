@@ -23,6 +23,6 @@ The Chinese automatic fill-in uses: [MDBG's Online Dictionary](http://chinesedic
 
 The English automatic fill-in uses: [Pearson's dictionary API](http://developer.pearson.com/apis/dictionaries)
 
-To automatic fill-in: 
+To use automatic fill-in: 
 
 Write any word you desire (that is supported)that you want the meaning of e.g. 人家 and press the Search button on the button of the view that creates cards. The pronunciation and definition text views will load automatically. If the word has more than one definition/pronunciation you will be able to cycle through them until you find the desired one. 
