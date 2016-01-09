@@ -338,7 +338,6 @@ class AddCardViewController: UIViewController, UITextViewDelegate {
         switch currentLanguage{
         case .English:
             let currentResult = results![resultIndex] as! PearsonData
-            self.phraseTextView.text = currentResult.headWord
             self.phraseTextView.textColor = UIColor.blackColor()
             self.pronunciationTextView.text = currentResult.pronunciation
             self.pronunciationTextView.textColor = UIColor.blackColor()
@@ -347,7 +346,6 @@ class AddCardViewController: UIViewController, UITextViewDelegate {
        
         case .Chinese:
             let currentResult = results![resultIndex] as! MDBGData
-            self.phraseTextView.text = currentResult.headWord
             self.phraseTextView.textColor = UIColor.blackColor()
             self.pronunciationTextView.text = currentResult.pronunciation
             self.pronunciationTextView.textColor = UIColor.blackColor()
