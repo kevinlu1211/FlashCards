@@ -4,15 +4,15 @@
 ## What is it?
 
 
-> FlashCards is a simple app that allows uses to add cards to a deck and then they are able to test themselves using the cards that they have created.
+> FlashCards is a simple app that allows users to add cards to a deck and then they are able to test themselves using the cards that they have created.
 
 ----
 ## Usage
-On the initial landing page you there is a Library with an Add button on the top right hand side for you to create a subject.
+On the initial landing page there is a Library with an Add button on the top right hand side for you to create a subject.
 
-After your subject is created it will appear and clicking on it will take you where you can create a deck via the same way (by clicking on the Add button on the top right hand side)
+After your subject is created it will appear, clicking on it will take you to a place where you can create a deck via the same way (by clicking on the Add button on the top right hand side)
 
-After your deck is created you can click on it and it will take you to a view that allows you to add cards to your deck.You will also be able to test yourself on the cards that you have created.
+After your deck is created you can click on it and it will take you to a view that allows you to add cards to your deck. You will also be able to test yourself on the cards that you have created.
 
 
 ----
