@@ -154,9 +154,9 @@ class SubjectCollectionViewController: UICollectionViewController, UIGestureReco
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! SubjectCollectionViewCell
         let subject = subjects[indexPath.row]
         
+        
         // Configure the cell
         cell.subjectNameLabel.configureCollectionViewCellLabel(subject.name)
-        
         cell.backgroundColor = UIColor.whiteColor()
         cell.alpha = 0.7
         return cell

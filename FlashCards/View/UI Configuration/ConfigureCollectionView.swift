@@ -13,7 +13,8 @@ extension UICollectionView {
     func configureCollectionView() {
         
         // Set background image
-        self.backgroundColor = UIColor(patternImage: UIImage(named: "woodenBackground")!)
+        let backgroundImageView = UIImageView(image: UIImage(named: "woodenBackground")!)
+        self.backgroundView = backgroundImageView
         
         // Create the layout
         let space = 10.0 as CGFloat

@@ -51,7 +51,8 @@ class FullTestViewController: UIViewController, UITextViewDelegate {
         configureNavigationBar()
         
         
-        let firstCard = getCard(currentIndex)
+        deck.createFlashCards()
+        let firstCard = deck.getCard(currentIndex)
         phraseTextView.text = firstCard.phrase
         pronunciationTextView.text = firstCard.pronunciation
         definitionTextView.text = firstCard.definition
@@ -156,7 +157,7 @@ class FullTestViewController: UIViewController, UITextViewDelegate {
         if (currentIndex - 1 < 0) {
             previousButton.disableButton()
         }
-        let card = getCard(currentIndex)
+        let card = deck.getCard(currentIndex)
         
         // Fade card view out and then update the cardView
         updateCardView(card)
@@ -174,14 +175,14 @@ class FullTestViewController: UIViewController, UITextViewDelegate {
             previousButton.enableButton()
             if (currentIndex == maxIndex) {
                 nextButton.setTitle("Finish", forState: .Normal)
-                let card = getCard(currentIndex)
+                let card = deck.getCard(currentIndex)
                 updateCardView(card)
             }
             else if (currentIndex > maxIndex) {
                 return
             }
             else {
-                let card = getCard(currentIndex)
+                let card = deck.getCard(currentIndex)
                 updateCardView(card)
             }
             
@@ -203,12 +204,7 @@ class FullTestViewController: UIViewController, UITextViewDelegate {
     }
     
     
-    // MARK: - Convert NSSet to Array
-    func getCard(index : Int) -> FlashCard {
-        let cards = deck.flashCards?.allObjects as! [FlashCard]
-        return cards[index]
-    }
-      /*
+         /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

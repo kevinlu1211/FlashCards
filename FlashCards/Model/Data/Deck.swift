@@ -14,7 +14,7 @@ class Deck : NSManagedObject {
     @NSManaged var detail : String?
     @NSManaged var flashCards : NSSet?
     @NSManaged var subject : Subject!
-    
+    var useableFlashCards : [FlashCard]?
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
@@ -28,4 +28,31 @@ class Deck : NSManagedObject {
         }
     }
     
+    func createFlashCards() {
+        self.useableFlashCards = self.flashCards?.allObjects as? [FlashCard]
+        self.shuffleDeck()
+    }
+    
+    func shuffleDeck() {
+        self.useableFlashCards?.shuffle((self.useableFlashCards?.count)!)
+    }
+    
+    func getCard(index : Int) -> FlashCard {
+        return self.useableFlashCards![index]
+    }
+
+}
+
+import Foundation
+
+extension Array
+{
+    /** Randomizes the order of an array's elements. */
+    mutating func shuffle(numberOfCards : Int)
+    {
+        for _ in 0..<numberOfCards
+        {
+            sortInPlace { (_,_) in arc4random() < arc4random() }
+        }
+    }
 }

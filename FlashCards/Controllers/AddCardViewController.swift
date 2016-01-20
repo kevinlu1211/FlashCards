@@ -385,8 +385,12 @@ class AddCardViewController: UIViewController, UITextViewDelegate {
         let chineseAction = UIAlertAction(title: "Chinese", style: .Default) { action -> Void in
             self.currentLanguage = .Chinese
         }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+            // do nothing
+        }
         languageController.addAction(englishAction)
         languageController.addAction(chineseAction)
+        languageController.addAction(cancelAction)
         self.presentViewController(languageController, animated: true, completion: nil)
     }
 

@@ -55,7 +55,7 @@ class DetailDeckViewController: UICollectionViewController {
     
     func deleteDeck() {
         let alertController = UIAlertController(title: "", message: "Confirmation to delete deck?", preferredStyle: .ActionSheet)
-        let yesAction = UIAlertAction(title: "Yes", style: .Default) {
+        let yesAction = UIAlertAction(title: "Yes", style: .Destructive) {
             (action) -> Void in
             self.sharedContext.deleteObject(self.deck!)
             CoreDataStackManager.sharedInstance().saveContext()
@@ -105,7 +105,7 @@ class DetailDeckViewController: UICollectionViewController {
         cell.alpha = 0.7
         
         if userAction == "Test" && deck?.flashCards!.count == 0 {
-            cell.userActionLabel.configureCollectionViewCellLabel("Add cards before testing")
+            cell.userActionLabel.configureCollectionViewCellLabel("Add Cards Before Testing")
             cell.alpha = 0.5
         }
 
