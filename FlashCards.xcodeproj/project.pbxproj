@@ -292,9 +292,9 @@
 		191ED04D1C4F04EE00B05DFB /* Deck */ = {
 			isa = PBXGroup;
 			children = (
-				194331971C33E804001ABC7D /* Deck.swift */,
 				19E7BC471C375CC80079A1EF /* DetailDeckViewController.swift */,
 				19E7BC4B1C3760720079A1EF /* UserActionCollectionViewCell.swift */,
+				194331971C33E804001ABC7D /* Deck.swift */,
 			);
 			name = Deck;
 			sourceTree = "<group>";

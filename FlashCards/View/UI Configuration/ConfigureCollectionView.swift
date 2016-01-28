@@ -14,6 +14,7 @@ extension UICollectionView {
         
         // Set background image
         let backgroundImageView = UIImageView(image: UIImage(named: "woodenBackground")!)
+        backgroundImageView.contentMode = .ScaleAspectFit
         self.backgroundView = backgroundImageView
         
         // Create the layout
@@ -22,6 +23,7 @@ extension UICollectionView {
         let width = (self.superview!.frame.size.width - (2 * space))
         let height = (self.superview!.frame.size.height - (2 * space))/6
         let edgeInsets = UIEdgeInsetsMake(space, 0, space, 0)
+        
         // Set left and right margins
         flowLayout.minimumInteritemSpacing = space
         
@@ -31,10 +33,7 @@ extension UICollectionView {
         
         // Set edge insets
         flowLayout.sectionInset = edgeInsets
-        
         flowLayout.itemSize = CGSizeMake(width, height)
-        
         self.setCollectionViewLayout(flowLayout, animated: true)
     }
-
 }

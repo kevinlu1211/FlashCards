@@ -21,6 +21,7 @@ class CardCollectionViewController: UICollectionViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        deck.createFlashCards()
         self.collectionView?.reloadData()
     }
     override func viewDidLoad() {
@@ -41,6 +42,10 @@ class CardCollectionViewController: UICollectionViewController {
     func configureUI() {
         self.collectionView!.configureCollectionView()
         configureNavigationBar()
+        
+        // Create the flash cards needed
+        deck.createFlashCards()
+        
         
     }
     
@@ -90,7 +95,7 @@ class CardCollectionViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CardCollectionViewCell
     
-        let card = getCard(indexPath.row)
+        let card = deck.getCard(indexPath.row)
 
         // Configure the cell
         cell.phraseLabel.text = card.phrase
@@ -110,17 +115,13 @@ class CardCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let card = getCard(indexPath.row)
+        let card = deck.getCard(indexPath.row)
         let detailCardViewController = self.storyboard?.instantiateViewControllerWithIdentifier("detailCardViewController") as! DetailCardViewController
         detailCardViewController.card = card
         self.navigationController?.pushViewController(detailCardViewController, animated: true)
         
     }
-    // MARK: - Convert NSSet to Array
-    func getCard(index : Int) -> FlashCard {
-        let cards = deck.flashCards?.allObjects as! [FlashCard]
-        return cards[index]
-    }
+   
     // MARK: UICollectionViewDelegate
 
     /*

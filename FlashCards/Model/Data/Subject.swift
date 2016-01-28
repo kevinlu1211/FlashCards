@@ -13,6 +13,7 @@ class Subject : NSManagedObject {
     
     @NSManaged var name : String!
     @NSManaged var decks : NSSet?
+    var useableDecks : [Deck]?
     
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
@@ -23,5 +24,11 @@ class Subject : NSManagedObject {
         self.name = name
     }
 
+    func createDecks() {
+        self.useableDecks = self.decks?.allObjects as? [Deck]
+    }
     
+    func getDeck(index : Int) -> Deck {
+        return self.useableDecks![index]
+    }
 }

@@ -23,6 +23,7 @@ class DeckCollectionViewController: UICollectionViewController {
     override func viewWillAppear(animated: Bool) {
         // If the view reappears then it may be that the user has added a new deck, hence we need to re-fetch the decks 
         super.viewWillAppear(animated)
+        subject.createDecks()
         self.collectionView?.reloadData()
 
     }
@@ -44,9 +45,11 @@ class DeckCollectionViewController: UICollectionViewController {
     
     // MARK: - UI Configuration
     func configureUI() {
-        
         configureNavigationBar()
         self.collectionView!.configureCollectionView()
+        
+        // Create the decks
+        subject.createDecks()
     }
     
     func configureNavigationBar() {
@@ -84,8 +87,7 @@ class DeckCollectionViewController: UICollectionViewController {
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! DeckCollectionViewCell
-        let deck = getDeck(indexPath.row)
-
+        let deck = subject.getDeck(indexPath.row)
         // Configure the cell
         cell.deckNameLabel.configureCollectionViewCellLabel(deck.name)
         
@@ -104,16 +106,12 @@ class DeckCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let deck = getDeck(indexPath.row)
+        let deck = subject.getDeck(indexPath.row)
         let detailDeckViewController = self.storyboard?.instantiateViewControllerWithIdentifier("detailDeckViewController") as! DetailDeckViewController
         detailDeckViewController.deck = deck
         self.navigationController?.pushViewController(detailDeckViewController, animated: true)
     }
     
-    func getDeck(index: Int) -> Deck {
-        let decks = subject.decks!.allObjects as? [Deck]
-        return decks![index]
-    }
     // MARK: UICollectionViewDelegate
 
     /*
