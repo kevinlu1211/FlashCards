@@ -12,10 +12,19 @@ import UIKit
 extension UICollectionView {
     func configureCollectionView() {
         
-        // Set background image
+//         Set background image
         let backgroundImageView = UIImageView(image: UIImage(named: "woodenBackground")!)
         backgroundImageView.contentMode = .ScaleAspectFit
         self.backgroundView = backgroundImageView
+        
+//        UIGraphicsBeginImageContext(super.frame.size)
+//        UIImage(named: "woodenBackground")?.drawAsPatternInRect(super.frame)
+//        
+//        var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+//        
+//        UIGraphicsEndImageContext()
+//        
+//        self.backgroundColor = UIColor(patternImage: image)
         
         // Create the layout
         let space = 10.0 as CGFloat

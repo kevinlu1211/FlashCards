@@ -17,4 +17,21 @@ extension UIView {
     func fadeOut(duration : NSTimeInterval = 1.0, delay : NSTimeInterval = 0.0, alpha : CGFloat = 0.0, completion: ((Bool) -> Void)? = {(finished: Bool) -> Void in }) {
         UIView.animateWithDuration(duration, delay: delay, options: UIViewAnimationOptions.CurveEaseOut, animations: {self.alpha = alpha}, completion: completion)
     }
+    func blurView(duration duration : NSTimeInterval = 1.0, alpha : CGFloat = 1.0, style: UIBlurEffectStyle) {
+        let blurEffect = UIBlurEffect(style: style)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.alpha = alpha
+        blurEffectView.frame = self.bounds
+        blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight] // for supporting device rotation
+        self.addSubview(blurEffectView)
+        
+    }
+    func removeEffects() {
+        for subview in self.subviews {
+            if (subview is UIVisualEffectView) {
+                subview.removeFromSuperview()
+            }
+        }
+    }
+
 }

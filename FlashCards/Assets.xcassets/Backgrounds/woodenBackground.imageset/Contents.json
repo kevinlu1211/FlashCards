@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal"
+    },
+    {
+      "idiom" : "iphone",
+      "filename" : "WoodenBackground_iPhone6sPlus2.pdf"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

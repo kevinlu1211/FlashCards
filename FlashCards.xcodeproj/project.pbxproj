@@ -36,6 +36,7 @@
 		19B0206A1C3B6E75001791D2 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 19B020681C3B6E75001791D2 /* libxml2.tbd */; };
 		19B0206C1C3B7C33001791D2 /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B0206B1C3B7C33001791D2 /* ButtonExtension.swift */; };
 		19C40C971C3C068F000BC474 /* DetailCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C40C961C3C068F000BC474 /* DetailCardViewController.swift */; };
+		19D34EBE1C6DE7B40013CE27 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D34EBD1C6DE7B40013CE27 /* LandingViewController.swift */; };
 		19E7BC481C375CC80079A1EF /* DetailDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E7BC471C375CC80079A1EF /* DetailDeckViewController.swift */; };
 		19E7BC4C1C3760720079A1EF /* UserActionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E7BC4B1C3760720079A1EF /* UserActionCollectionViewCell.swift */; };
 		19E7BC521C37678A0079A1EF /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E7BC511C37678A0079A1EF /* CardCollectionViewCell.swift */; };
@@ -111,6 +112,7 @@
 		19B020681C3B6E75001791D2 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		19B0206B1C3B7C33001791D2 /* ButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
 		19C40C961C3C068F000BC474 /* DetailCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCardViewController.swift; sourceTree = "<group>"; };
+		19D34EBD1C6DE7B40013CE27 /* LandingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		19E7BC471C375CC80079A1EF /* DetailDeckViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailDeckViewController.swift; sourceTree = "<group>"; };
 		19E7BC4B1C3760720079A1EF /* UserActionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserActionCollectionViewCell.swift; path = "../View/Collection View Cells/UserActionCollectionViewCell.swift"; sourceTree = "<group>"; };
 		19E7BC511C37678A0079A1EF /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardCollectionViewCell.swift; path = "../View/Collection View Cells/CardCollectionViewCell.swift"; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 		19162E6C1C3254F500BB3BD4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				19D34EBC1C6DE7990013CE27 /* Landing Page */,
 				191ED04B1C4F04C000B05DFB /* Subject */,
 				191ED04C1C4F04E000B05DFB /* Decks */,
 				191ED04D1C4F04EE00B05DFB /* Deck */,
@@ -354,6 +357,14 @@
 			name = TFHpple;
 			path = FlashCards/Resources/TFHpple;
 			sourceTree = SOURCE_ROOT;
+		};
+		19D34EBC1C6DE7990013CE27 /* Landing Page */ = {
+			isa = PBXGroup;
+			children = (
+				19D34EBD1C6DE7B40013CE27 /* LandingViewController.swift */,
+			);
+			name = "Landing Page";
+			sourceTree = "<group>";
 		};
 		19F0D15E1C3E128100D5D888 /* CoreData */ = {
 			isa = PBXGroup;
@@ -540,6 +551,7 @@
 				19E7BC561C378C8A0079A1EF /* SubjectCollectionViewController.swift in Sources */,
 				19B0205F1C3B6D6A001791D2 /* TFHppleElement.m in Sources */,
 				19E7BC4C1C3760720079A1EF /* UserActionCollectionViewCell.swift in Sources */,
+				19D34EBE1C6DE7B40013CE27 /* LandingViewController.swift in Sources */,
 				19F0D1A41C3F9BEA00D5D888 /* PearsonClient.swift in Sources */,
 				19ED4D471C38C18A00CA2E1E /* LabelExtension.swift in Sources */,
 				196CBD121C325F5B00302FE3 /* DeckCollectionViewController.swift in Sources */,
